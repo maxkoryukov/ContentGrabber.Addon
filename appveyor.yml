@@ -1,0 +1,64 @@
+version: $(MY_VERSION_NUMBER).{build}-{branch}
+
+pull_requests:
+  do_not_increment_build_number: true
+
+clone_folder: c:\projects\ContentGrabber.Addon
+
+cache:
+  - packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: $(MY_VERSION_NUMBER).{build}
+  assembly_file_version: $(MY_VERSION_NUMBER).{build}
+
+before_build:
+  - nuget restore
+  - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
+  - pip install codecov
+
+configuration: Release
+
+environment:
+  MY_VERSION_NUMBER: 0.0.1
+
+  COVERALLS_REPO_TOKEN:
+    secure: 2Ms497ur1lidXPzesGpHAMTsmQqEDMuavbfkRKfaZiipJGplapYxCckeNJ+hYbUl
+
+build:
+  project: ContentGrabber.Addon.sln
+  verbosity: minimal
+
+test:
+  # assemblies to test - optional
+  assemblies:
+    - '**\*.Test.exe'
+    - '**\*.Test.dll'
+  categories:
+    except:
+    - skip
+
+artifacts:
+- path: ContentGrabber.Addon\bin\Release\ContentGrabber.Addon.dll
+  name: ContentGrabber.Addon.dll
+
+after_test:
+  - .\packages\OpenCover.4.6.519\OpenCover.Console.exe -register:user -target:nunit3-console -targetargs:"/noresults /noisolation /testcontainer:"".\ContentGrabber.Addon\bin\Release\ContentGrabber.Addon.Test.dll" -excludebyattribute:*.ExcludeFromCodeCoverage* -hideskipped:None -output:.\coverage.xml
+  - codecov -f "coverage.xml"
+
+deploy:
+  release: $(MY_VERSION_NUMBER)
+  description: '[![Coverage Status](https://coveralls.io/repos/github/maxkoryukov/MK.Lib/badge.svg?branch=$(MY_VERSION_NUMBER))](https://coveralls.io/github/maxkoryukov/MK.Lib?branch=$(MY_VERSION_NUMBER))
+
+* **ADD INFO FROM CHANGELOG**'
+  provider: GitHub
+  auth_token:
+    secure: cMlMNvFKbCJ4qniAHC5tPYS5xTA0MvGsBgbTc+zykO5I02heS+DFt5d0tcACXbcw
+  artifact: ContentGrabber.Addon.dll
+  draft: true
+  prerelease: false
+  on:
+    #branch: master                  # release from master branch only
+    appveyor_repo_tag: true         # deploy on tag push only
