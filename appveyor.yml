@@ -45,7 +45,7 @@ artifacts:
   name: ContentGrabber.Addon.dll
 
 after_test:
-  - .\packages\OpenCover.4.6.519\OpenCover.Console.exe -register:user -target:nunit3-console -targetargs:"/noresults /noisolation /testcontainer:"".\ContentGrabber.Addon\bin\Release\ContentGrabber.Addon.Test.dll" -excludebyattribute:*.ExcludeFromCodeCoverage* -hideskipped:None -output:.\coverage.xml
+  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:nunit3-console -targetargs:"/noresults /noisolation /testcontainer:"".\ContentGrabber.Addon\bin\Release\ContentGrabber.Addon.Test.dll" -excludebyattribute:*.ExcludeFromCodeCoverage* -hideskipped:None -output:.\coverage.xml
   - codecov -f "coverage.xml"
 
 deploy:
