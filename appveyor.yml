@@ -45,13 +45,12 @@ artifacts:
   name: ContentGrabber.Addon.dll
 
 after_test:
-  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:"/noresults /noisolation /testcontainer:"".\ContentGrabber.Addon.Test\bin\Debug\ContentGrabber.Addon.Test.dll" -excludebyattribute:*.ExcludeFromCodeCoverage* -output:.\coverage.xml
+  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Debug\ContentGrabber.Addon.Test.dll --noresult --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -output:.\coverage.xml
   - codecov -f "coverage.xml"
 
 deploy:
   release: $(MY_VERSION_NUMBER)
-  description: '$(MY_VERSION_NUMBER)
-[![codecov](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/$(MY_VERSION_NUMBER)/graph/badge.svg)](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon)
+  description: '[![codecov](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/$(MY_VERSION_NUMBER)/graph/badge.svg)](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/$(MY_VERSION_NUMBER))
 
 * **ADD INFO FROM CHANGELOG**'
   provider: GitHub
