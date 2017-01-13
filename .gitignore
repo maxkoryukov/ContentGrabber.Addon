@@ -1,0 +1,9 @@
+/ContentGrabber.Addon.userprefs
+
+/packages/
+/.nuget/
+/**/bin/
+/**/obj/
+
+/TestResult.xml
+/coverage.xml
