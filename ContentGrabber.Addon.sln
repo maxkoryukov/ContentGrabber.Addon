@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentGrabber.Addon", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentGrabber.Addon.Test", "ContentGrabber.Addon.Test\ContentGrabber.Addon.Test.csproj", "{439A3BB5-674B-4D6A-AFCC-4F879B2D857E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSubstrings", "TestSubstrings\TestSubstrings.csproj", "{6B0D57BB-A816-437D-9907-8456418CA2B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{63EEB8AF-2C8C-45AD-AF91-1827184F072E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63EEB8AF-2C8C-45AD-AF91-1827184F072E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63EEB8AF-2C8C-45AD-AF91-1827184F072E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0D57BB-A816-437D-9907-8456418CA2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0D57BB-A816-437D-9907-8456418CA2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0D57BB-A816-437D-9907-8456418CA2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0D57BB-A816-437D-9907-8456418CA2B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

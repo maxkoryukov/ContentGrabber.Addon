@@ -22,10 +22,7 @@ before_build:
 configuration: Release
 
 environment:
-  MY_VERSION_NUMBER: 0.0.1
-
-  COVERALLS_REPO_TOKEN:
-    secure: 2Ms497ur1lidXPzesGpHAMTsmQqEDMuavbfkRKfaZiipJGplapYxCckeNJ+hYbUl
+  MY_VERSION_NUMBER: 0.1.0
 
 build:
   project: ContentGrabber.Addon.sln
@@ -41,19 +38,17 @@ test:
     - skip
 
 after_test:
-  #-.\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Test\ContentGrabber.Addon.Test.dll --noresult --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -output:.\coverage.xml
-  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Test\ContentGrabber.Addon.Test.dll --result=nunit2  --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -log:All -output:coverage.xml
+  - .\TestSubstrings\bin\Release\TestSubstrings.exe
+  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Test\ContentGrabber.Addon.Test.dll --noresult --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -output:coverage.xml
   - codecov -f "coverage.xml"
 
 artifacts:
   - path: ContentGrabber.Addon\bin\Release\ContentGrabber.Addon.dll
     name: ContentGrabber.Addon.dll
-  - path: coverage.xml
-    name: coverage.xml
 
 deploy:
-  release: $(MY_VERSION_NUMBER)
-  description: '[![codecov](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/$(MY_VERSION_NUMBER)/graph/badge.svg)](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/$(MY_VERSION_NUMBER))
+  release: $(APPVEYOR_REPO_TAG_NAME)
+  description: '[![codecov](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/$(APPVEYOR_REPO_TAG_NAME)/graph/badge.svg)](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/$(APPVEYOR_REPO_TAG_NAME))
 
 * **ADD INFO FROM CHANGELOG**'
   provider: GitHub
