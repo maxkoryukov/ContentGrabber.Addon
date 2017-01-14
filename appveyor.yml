@@ -22,7 +22,7 @@ before_build:
 configuration: Release
 
 environment:
-  MY_VERSION_NUMBER: 0.3.0
+  MY_VERSION_NUMBER: 1.0.0
 
 build:
   project: ContentGrabber.Addon.sln
