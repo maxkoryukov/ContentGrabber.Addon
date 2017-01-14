@@ -90,13 +90,28 @@ namespace ContentGrabber.Addon.Ext {
 
 		#region Regexes
 		public static string MatchFirstNotEmpty(this string text, params string [] patterns) {
-			var r = patterns
-				.Select(x => new Regex(x))
-				.ToArray();
-			return MatchFirstNotEmpty(text, r);
+			foreach (var p in patterns) {
+				var r = new Regex(p);
+				var m = r.Match(text);
+				if (m.Success) {
+					if (!string.IsNullOrEmpty(m.Value)) {
+						return m.Value;
+					}
+				}
+			}
+
+			return null;
 		}
 
 		public static string MatchFirstNotEmpty(this string text, params Regex [] patterns) {
+			foreach (var r in patterns) {
+				var m = r.Match(text);
+				if (m.Success) {
+					if (!string.IsNullOrEmpty(m.Value))
+						return m.Value;
+				};
+			}
+
 			return null;
 		}
 
@@ -108,7 +123,15 @@ namespace ContentGrabber.Addon.Ext {
 		}
 
 		public static string [] MatchNotEmpty(this string text, params Regex [] patterns) {
-			return null;
+			var res = new List<string>();
+			foreach (var r in patterns) {
+				foreach (Match m in r.Matches(text)){
+					res.Add(m.Value);
+				}
+			}
+			return res
+				.Where(x => !string.IsNullOrEmpty(x))
+				.ToArray();
 		}
 		#endregion
 	}
