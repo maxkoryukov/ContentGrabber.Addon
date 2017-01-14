@@ -22,8 +22,8 @@ before_build:
 configuration: Release
 
 environment:
-  MY_VERSION_NUMBER: 0.2.1
-  RUN_STRING_TEST: 1
+  MY_VERSION_NUMBER: 0.3.0
+  RUN_STRING_TEST: 0
 
 build:
   project: ContentGrabber.Addon.sln
