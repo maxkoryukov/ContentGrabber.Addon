@@ -37,9 +37,8 @@ namespace ContentGrabber.Addon.Test.SearchListsTest {
 			var d = RawCases[0];
 			var ans = d.positions
 				.Select(x => {
-					return x.HasValue ? (int?)x + 1 : (int?)null;
+					return x.HasValue ? string.Format("pos{0:00000}", x + 1) : "";
 				})
-				.Select(x => x.ToString())
 				.ToArray();
 			yield return new object[] {d.text, string.Join(";", d.patterns), string.Join(";", ans)};
 		}
@@ -55,7 +54,7 @@ namespace ContentGrabber.Addon.Test.SearchListsTest {
 			var d = RawCases[0];
 			var ans = d.positions
 				.Select(x => {
-					return x.HasValue ? (int?)x + 1 : (int?)null;
+					return x.HasValue ? string.Format("pos{0:00000}", x + 1) : "";
 				})
 				.Select(x => x.ToString())
 				.ToArray();

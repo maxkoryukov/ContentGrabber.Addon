@@ -176,9 +176,9 @@ namespace ContentGrabber.Addon.Test {
 			//       └─┐         └──────────────────┐             └────────┐
 			// answer ─┘ , since we are looking for second pattern (it is here)
 			Assert.That(result1, Is.EqualTo(result2));
-			Assert.That(result1, Is.EqualTo(null));
-			Assert.That(result2, Is.EqualTo(null));
-			Assert.That(result3, Is.EqualTo(4));
+			Assert.That(result1, Is.EqualTo(false));
+			Assert.That(result2, Is.EqualTo(false));
+			Assert.That(result3, Is.EqualTo(true));
 		}
 		#endregion
 
@@ -202,10 +202,10 @@ namespace ContentGrabber.Addon.Test {
 		[Test]
 		public void SearchLists_DoesExistStringPattern() {
 
-			var result = SearchLists.DoesExistArrayPattern(
+			var result = SearchLists.DoesExistStringPattern(
 				"one two three", 2, "one;six;two"
 			);
-			Assert.That(result, Is.EqualTo(4));
+			Assert.That(result, Is.EqualTo(true));
 		}
 		#endregion
 	}
