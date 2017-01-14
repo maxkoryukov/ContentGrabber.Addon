@@ -65,6 +65,18 @@ namespace ContentGrabber.Addon {
 		public static string JoinNonEmpty(this string sep, params string [] str) {
 			return StringExt.JoinNonEmpty(sep, (IEnumerable<string>)str);
 		}
+
+		public static bool ContainsCustom(this string str, string sub) {
+			return (str.Length - str.Replace(sub, String.Empty).Length) / sub.Length > 0;
+		}
+
+		public static bool ContainsLib(this string str, string sub) {
+			return str.Contains(sub);
+		}
+
+		public static bool ContainsThree(this string str, string s1, string s2, string s3) {
+			return false;
+		}
 	}
 }
 
