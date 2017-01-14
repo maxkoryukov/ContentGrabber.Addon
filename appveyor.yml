@@ -23,6 +23,7 @@ configuration: Release
 
 environment:
   MY_VERSION_NUMBER: 0.1.0
+  RUN_STRING_TEST: 1
 
 build:
   project: ContentGrabber.Addon.sln
@@ -38,7 +39,7 @@ test:
     - skip
 
 after_test:
-  - .\TestSubstrings\bin\Release\TestSubstrings.exe
+  - ps: if (GetVariable RUN_STRING_TEST -ErrorAction SilentlyContinue) { .\TestSubstrings\bin\Release\TestSubstrings.exe }
   - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Test\ContentGrabber.Addon.Test.dll --noresult --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -output:coverage.xml
   - codecov -f "coverage.xml"
 

@@ -92,54 +92,7 @@ namespace TestApplication
 			Console.WriteLine("###########################################################");
 			Console.WriteLine();
 
-			//return (strToSearch.Length - strToSearch.Replace(strKeyToLookFor, String.Empty).Length) / strKeyToLookFor.Length;
-			Console.WriteLine("Starting method: 'custom string method' ");
-			start = DateTime.Now;
-			for (int x = 0; x < ss.Length; x++)
-			{
-				for (int y = 0; y < sf.Length; y++)
-				{
-					c[y] += ((ss[x].Length - ss[x].Replace(sf[y], String.Empty).Length) / sf[y].Length > 0 ? 1 : 0);
-				}
-			}
-			end = DateTime.Now;
-			Console.WriteLine("Finished at: " + end.ToLongTimeString());
-			Console.WriteLine("Time: " + (end - start));
-			total = 0;
-			for (int x = 0; x < c.Length; x++)
-			{
-				total += c[x];
-			}
-			Console.WriteLine("Total finds: " + total + Environment.NewLine);
-			Console.WriteLine();
-			Console.WriteLine("###########################################################");
-			Console.WriteLine();
-
-			Array.Clear(c, 0, c.Length);
-			Console.WriteLine("Starting method: 'count split string on string' ");
-			start = DateTime.Now;
-			for (int x = 0; x < ss.Length; x++)
-			{
-				for (int y = 0; y < sf.Length; y++)
-				{
-					c[y] += (ss[x].Split(new string[] { sf[y] }, StringSplitOptions.None).Count() - 1 > 0 ? 1 : 0);
-				}
-			}
-			end = DateTime.Now;
-			Console.WriteLine("Finished at: " + end.ToLongTimeString());
-			Console.WriteLine("Time: " + (end - start));
-			total = 0;
-			for (int x = 0; x < c.Length; x++)
-			{
-				total += c[x];
-			}
-			Console.WriteLine("Total finds: " + total + Environment.NewLine);
-			Console.WriteLine();
-			Console.WriteLine("###########################################################");
-			Console.WriteLine();
-
-			Array.Clear(c, 0, c.Length);
-			Console.WriteLine("Starting method: 'String.Contains' ");
+			Console.WriteLine("T3 Starting method: 'String.Contains' ");
 			start = DateTime.Now;
 			for (int x = 0; x < ss.Length; x++)
 			{
@@ -162,6 +115,53 @@ namespace TestApplication
 			Console.WriteLine();
 
 			Array.Clear(c, 0, c.Length);
+			//return (strToSearch.Length - strToSearch.Replace(strKeyToLookFor, String.Empty).Length) / strKeyToLookFor.Length;
+			Console.WriteLine("T1 Starting method: 'custom string method' ");
+			start = DateTime.Now;
+			for (int x = 0; x < ss.Length; x++)
+			{
+				for (int y = 0; y < sf.Length; y++)
+				{
+					c[y] += ((ss[x].Length - ss[x].Replace(sf[y], String.Empty).Length) / sf[y].Length > 0 ? 1 : 0);
+				}
+			}
+			end = DateTime.Now;
+			Console.WriteLine("Finished at: " + end.ToLongTimeString());
+			Console.WriteLine("Time: " + (end - start));
+			total = 0;
+			for (int x = 0; x < c.Length; x++)
+			{
+				total += c[x];
+			}
+			Console.WriteLine("Total finds: " + total + Environment.NewLine);
+			Console.WriteLine();
+			Console.WriteLine("###########################################################");
+			Console.WriteLine();
+			Array.Clear(c, 0, c.Length);
+
+			Console.WriteLine("Starting method: 'count split string on string' ");
+			start = DateTime.Now;
+			for (int x = 0; x < ss.Length; x++)
+			{
+				for (int y = 0; y < sf.Length; y++)
+				{
+					c[y] += (ss[x].Split(new string[] { sf[y] }, StringSplitOptions.None).Count() - 1 > 0 ? 1 : 0);
+				}
+			}
+			end = DateTime.Now;
+			Console.WriteLine("Finished at: " + end.ToLongTimeString());
+			Console.WriteLine("Time: " + (end - start));
+			total = 0;
+			for (int x = 0; x < c.Length; x++)
+			{
+				total += c[x];
+			}
+			Console.WriteLine("Total finds: " + total + Environment.NewLine);
+			Console.WriteLine();
+			Console.WriteLine("###########################################################");
+			Console.WriteLine();
+			Array.Clear(c, 0, c.Length);
+
 			Console.WriteLine("Starting method: 'String.indexOf' ");
 			start = DateTime.Now;
 			for (int x = 0; x < ss.Length; x++)
@@ -225,42 +225,42 @@ namespace TestApplication
 			Console.WriteLine();
 
 			Array.Clear(c, 0, c.Length);
-			Console.WriteLine("Starting method: 'Regex IsMatch uncompiled' ");
-			start = DateTime.Now;
-			for (int x = 0; x < ss.Length; x++)
-			{
-				for (int y = 0; y < sf.Length; y++)
-				{
-					c[y] += Regex.IsMatch(ss[x], Regex.Escape(sf[y])) == true ? 1 : 0;
-				}
-			}
-			end = DateTime.Now;
-			Console.WriteLine("Finished at: " + end.ToLongTimeString());
-			Console.WriteLine("Time: " + (end - start));
-			total = 0;
-			for (int x = 0; x < c.Length; x++)
-			{
-				total += c[x];
-			}
-			Console.WriteLine("Total finds: " + total + Environment.NewLine);
-			Console.WriteLine();
-			Console.WriteLine("###########################################################");
-			Console.WriteLine();
-
-			total = 0;
-			Console.WriteLine("Starting method: 'Single AsParallel() Regex' ");
-			start = DateTime.Now;
-			for (int x = 0; x < ss.Length; x++)
-			{
-				total += sf.AsParallel().Sum(s => Regex.IsMatch(ss[x], Regex.Escape(s)) ? 1 : 0);
-			}
-			end = DateTime.Now;
-			Console.WriteLine("Finished at: " + end.ToLongTimeString());
-			Console.WriteLine("Time: " + (end - start));
-			Console.WriteLine("Total finds: " + total + Environment.NewLine);
-			Console.WriteLine();
-			Console.WriteLine("###########################################################");
-			Console.WriteLine();
+//			Console.WriteLine("Starting method: 'Regex IsMatch uncompiled' ");
+//			start = DateTime.Now;
+//			for (int x = 0; x < ss.Length; x++)
+//			{
+//				for (int y = 0; y < sf.Length; y++)
+//				{
+//					c[y] += Regex.IsMatch(ss[x], Regex.Escape(sf[y])) == true ? 1 : 0;
+//				}
+//			}
+//			end = DateTime.Now;
+//			Console.WriteLine("Finished at: " + end.ToLongTimeString());
+//			Console.WriteLine("Time: " + (end - start));
+//			total = 0;
+//			for (int x = 0; x < c.Length; x++)
+//			{
+//				total += c[x];
+//			}
+//			Console.WriteLine("Total finds: " + total + Environment.NewLine);
+//			Console.WriteLine();
+//			Console.WriteLine("###########################################################");
+//			Console.WriteLine();
+//
+//			total = 0;
+//			Console.WriteLine("Starting method: 'Single AsParallel() Regex' ");
+//			start = DateTime.Now;
+//			for (int x = 0; x < ss.Length; x++)
+//			{
+//				total += sf.AsParallel().Sum(s => Regex.IsMatch(ss[x], Regex.Escape(s)) ? 1 : 0);
+//			}
+//			end = DateTime.Now;
+//			Console.WriteLine("Finished at: " + end.ToLongTimeString());
+//			Console.WriteLine("Time: " + (end - start));
+//			Console.WriteLine("Total finds: " + total + Environment.NewLine);
+//			Console.WriteLine();
+//			Console.WriteLine("###########################################################");
+//			Console.WriteLine();
 
 			total = 0;
 			Console.WriteLine("Starting method: 'Parallel For Custom Counting' ");
@@ -430,60 +430,7 @@ namespace TestApplication
 			Console.WriteLine("###########################################################");
 			Console.WriteLine();
 
-			total = 0;
-			Console.WriteLine("Starting method: 'Parallel For Regex.IsMatch()' ");
-			start = DateTime.Now;
-			Parallel.For(0, ss.Length,
-				() => 0,
-				(x, loopState, subtotal) =>
-				{
-					for (int y = 0; y < sf.Length; y++)
-					{
-						subtotal += Regex.IsMatch(ss[x], Regex.Escape(sf[y])) == true ? 1 : 0;
-					}
-					return subtotal;
-				},
-				(s) =>
-				{
-					lock (lockObject)
-					{
-						total += s;
-					}
-				}
-			);
-			end = DateTime.Now;
-			Console.WriteLine("Finished at: " + end.ToLongTimeString());
-			Console.WriteLine("Time: " + (end - start));
-			Console.WriteLine("Total finds: " + total + Environment.NewLine);
-			Console.WriteLine();
-			Console.WriteLine("###########################################################");
-			Console.WriteLine();
 
-			total = 0;
-			Console.WriteLine("Starting method: 'Parallel For AsParallel() Regex' ");
-			start = DateTime.Now;
-			Parallel.For(0, ss.Length,
-				() => 0,
-				(x, loopState, subtotal) =>
-				{
-					subtotal += sf.AsParallel().Sum(s => Regex.IsMatch(ss[x], Regex.Escape(s)) ? 1 : 0);
-					return subtotal;
-				},
-				(s) =>
-				{
-					lock (lockObject)
-					{
-						total += s;
-					}
-				}
-			);
-			end = DateTime.Now;
-			Console.WriteLine("Finished at: " + end.ToLongTimeString());
-			Console.WriteLine("Time: " + (end - start));
-			Console.WriteLine("Total finds: " + total + Environment.NewLine);
-			Console.WriteLine();
-			Console.WriteLine("###########################################################");
-			Console.WriteLine();
 
 			Array.Clear(ss, 0, ss.Length);
 			ss = null;
