@@ -12,7 +12,8 @@ namespace ContentGrabber.Addon.Test {
 		[Platform("Win")]
 		public void Bat01() {
 
-			ContentGrabber.Addon.Bat.Exec(System.IO.Path.Combine("ContentGrabber.Addon.Test", "Bat", "echo.bat"));
+			var path = System.IO.Path.Combine("ContentGrabber.Addon.Test", "Bat", "echo.bat");
+			ContentGrabber.Addon.Bat.Exec(path);
 			Assert.True(true);
 		}
 
@@ -42,7 +43,15 @@ namespace ContentGrabber.Addon.Test {
 			string s004 = null;
 			var s005 = "123";
 
-			var joined = ContentGrabber.Addon.StringExt.JoinNonEmpty(" | ", s001, s002, s003, s004, s005 /* s006 .... as many as you wish */);
+			var joined = ContentGrabber.Addon.StringExt.JoinNonEmpty(
+				" | ", 
+				s001, 
+				s002, 
+				s003, 
+				s004, 
+				s005 
+				/* s006 .... as many as you wish */
+			);
 			Assert.That(joined, Is.EqualTo("a | xxxxx | 123"));
 		}
 
@@ -57,10 +66,26 @@ namespace ContentGrabber.Addon.Test {
 			string s004 = null;
 			var s005 = "123";
 
-			var joined = " | ".JoinNonEmpty(s001, s002, s003, s004, s005 /* s006 .... as many as you wish */);
+			var joined = " | ".JoinNonEmpty(
+				s001, 
+				s002, 
+				s003, 
+				s004, 
+				s005 
+				/* s006 .... as many as you wish */
+			);
 			Assert.That(joined, Is.EqualTo("a | xxxxx | 123"));
 		}
 		#endregion
+
+		[Test]
+		public void ContainsAny02() {
+			// add to the top of file:
+			// using ContentGrabber.Addon;
+
+			var result = "one two three".ContainsAny("one", "two", "three");
+			Assert.That(result, Is.True);
+		}
 	}
 }
 

@@ -74,7 +74,16 @@ namespace ContentGrabber.Addon {
 			return str.Contains(sub);
 		}
 
-		public static bool ContainsThree(this string str, string s1, string s2, string s3) {
+		public static bool ContainsAny(this string str, params string [] substrings) {
+			if (null == str) {
+				return false;
+			}
+			foreach (var sub in substrings) {
+				if (null == sub)
+					continue;
+				if (str.Contains(sub))
+					return true;
+			}
 			return false;
 		}
 	}

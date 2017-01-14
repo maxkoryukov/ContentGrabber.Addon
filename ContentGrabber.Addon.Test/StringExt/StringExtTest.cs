@@ -30,5 +30,30 @@ namespace ContentGrabber.Addon.Test.StringExt {
 			return sep.JoinNonEmpty(input);
 		}
 	}
+
+	[TestFixture]
+	public class Contains {
+		[Test]
+		[TestCase("a two four five", "four", ExpectedResult=true)]
+		public bool Normal(string str, string sub) {
+			var res1 = str.ContainsCustom(sub);
+			var res2 = str.ContainsLib(sub);
+
+			Assert.That(res1, Is.EqualTo(res2));
+			return res1;
+		}
+	}
+
+	[TestFixture]
+	public class ContainsAny {
+		[Test]
+		[TestCase(null, new string [] { null }, ExpectedResult=false)]
+		[TestCase("a two four five", new string [] { null }, ExpectedResult=false)]
+		[TestCase("a two four five", new string [] { "two" }, ExpectedResult=true)]
+		[TestCase("a two four five", new string [] { "ten" }, ExpectedResult=false)]
+		public bool Normal(string str, string [] subs) {
+			return str.ContainsAny(subs);
+		}
+	}
 }
 
