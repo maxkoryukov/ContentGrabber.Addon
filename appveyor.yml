@@ -41,8 +41,8 @@ test:
     - skip
 
 after_test:
-  #-.\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Debug\ContentGrabber.Addon.Test.dll --noresult --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -output:.\coverage.xml
-  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Debug\ContentGrabber.Addon.Test.dll --result=nunit2  --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -log:All -output:coverage.xml
+  #-.\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Test\ContentGrabber.Addon.Test.dll --noresult --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -output:.\coverage.xml
+  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]* -[ContentGrabber.Addon.Test]*" -target:nunit3-console.exe -targetargs:".\ContentGrabber.Addon.Test\bin\Test\ContentGrabber.Addon.Test.dll --result=nunit2  --noheader --nocolor" -excludebyattribute:*.ExcludeFromCodeCoverage* -log:All -output:coverage.xml
   - codecov -f "coverage.xml"
 
 artifacts:
