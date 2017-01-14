@@ -4,6 +4,28 @@ using NUnit.Framework;
 using ContentGrabber.Addon;
 
 namespace ContentGrabber.Addon.Test.StringExt {
+
+	[TestFixture]
+	public class ToTitleCase {
+
+		[Test]
+		[TestCase(null,   ExpectedResult=null)]
+		[TestCase("",     ExpectedResult="")]
+		[TestCase("  ",   ExpectedResult="  ")]
+		[TestCase("asdf", ExpectedResult="Asdf")]
+		[TestCase("mAn in The MiDdlE", ExpectedResult="Man In The Middle")]
+		public string Normal(string input) {
+			return input.ToTitleCase();
+		}
+
+		[Test]
+		[TestCase("asdf", ExpectedResult="Asdf")]
+		public string WithExplicitCulture(string input) {
+			var ci = System.Globalization.CultureInfo.InvariantCulture;
+			return input.ToTitleCase(ci);
+		}
+	}
+
 	[TestFixture]
 	public class PrettyLanguage {
 	
