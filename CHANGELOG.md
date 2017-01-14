@@ -7,10 +7,14 @@ This is the history of changes of the `ContentGrabber.Addon` package
 
 ## unreleased // ???
 
+*
+
+## 0.2.1 // 2017-01-14
+
+* String methods
+
 ----
 
 ## 0.0.1 // 2017-01-14
 
 * INIT
-
-----
