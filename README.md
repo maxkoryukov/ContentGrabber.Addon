@@ -24,7 +24,11 @@ Use as static method:
 
 ```csharp
 		public void PrettyLanguage01() {
-			var pretty = ContentGrabber.Addon.StringExt.PrettyLanguage("<tr><td>ITALIAN<");
+
+			// add to the top of file:
+			// using ContentGrabber.Addon.Ext;
+
+			var pretty = StringExt.PrettyLanguage("<tr><td>ITALIAN<");
 			Assert.That(pretty, Is.EqualTo("Italian;"));
 		}
 ```
@@ -34,7 +38,7 @@ Or as string-extension:
 ```csharp
 		public void PrettyLanguage02() {
 			// add to the top of file:
-			// using ContentGrabber.Addon;
+			// using ContentGrabber.Addon.Ext;
 			var pretty ="<tr><td>ITALIAN<".PrettyLanguage();
 			Assert.That(pretty, Is.EqualTo("Italian;"));
 		}
@@ -52,13 +56,13 @@ Use as static method:
 			string s004 = null;
 			var s005 = "123";
 
-			var joined = ContentGrabber.Addon.StringExt.JoinNonEmpty(
-				" | ", 
-				s001, 
-				s002, 
-				s003, 
-				s004, 
-				s005 
+			var joined = StringExt.JoinNonEmpty(
+				" | ",
+				s001,
+				s002,
+				s003,
+				s004,
+				s005
 				/* s006 .... as many as you wish */
 			);
 			Assert.That(joined, Is.EqualTo("a | xxxxx | 123"));
@@ -70,7 +74,7 @@ Or as string-extension:
 ```csharp
 		public void JoinNonEmpty02() {
 			// add to the top of file:
-			// using ContentGrabber.Addon;
+			// using ContentGrabber.Addon.Ext;
 
 			var s001 = "a";
 			var s002 = "";
@@ -79,11 +83,11 @@ Or as string-extension:
 			var s005 = "123";
 
 			var joined = " | ".JoinNonEmpty(
-				s001, 
-				s002, 
-				s003, 
-				s004, 
-				s005 
+				s001,
+				s002,
+				s003,
+				s004,
+				s005
 				/* s006 .... as many as you wish */
 			);
 			Assert.That(joined, Is.EqualTo("a | xxxxx | 123"));
@@ -114,7 +118,7 @@ Use as string-extension:
 ```csharp
 		public void ContainsAny02() {
 			// add to the top of file:
-			// using ContentGrabber.Addon;
+			// using ContentGrabber.Addon.Ext;.Ext;
 
 			var result = "one two three".ContainsAny("one", "two", "three");
 			Assert.That(result, Is.True);
