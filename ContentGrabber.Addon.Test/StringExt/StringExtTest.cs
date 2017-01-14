@@ -1,9 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
 
-using ContentGrabber.Addon;
+namespace ContentGrabber.Addon.Test.StringExtTest {
 
-namespace ContentGrabber.Addon.Test.StringExt {
+	using ContentGrabber.Addon.Ext;
 
 	[TestFixture]
 	public class ToTitleCase {
@@ -35,6 +35,7 @@ namespace ContentGrabber.Addon.Test.StringExt {
 		[TestCase("  ", ExpectedResult="  ")]
 		[TestCase("<tr><td>ENGLISH<", ExpectedResult="English;")]
 		[TestCase("<tr><td>FRENCH<", ExpectedResult="French;")]
+		[TestCase("<tr><td>ITALIAN", ExpectedResult="Italian;")]
 		public string Normal(string input) {
 			return input.PrettyLanguage();
 		}

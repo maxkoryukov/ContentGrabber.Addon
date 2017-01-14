@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ContentGrabber.Addon {
+namespace ContentGrabber.Addon.Ext {
 	public static class StringExt {
 		private static Regex DryPrettyLaguage = new Regex(@"<\w+>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -32,8 +32,9 @@ namespace ContentGrabber.Addon {
 			;
 
 			if (result.EndsWith("<")) {
-				result = result.Remove(result.Length-1) + ';';
+				result = result.Remove(result.Length-1);
 			};
+			result += ";";
 
 			return result;
 		}
@@ -86,6 +87,30 @@ namespace ContentGrabber.Addon {
 			}
 			return false;
 		}
+
+		#region Regexes
+		public static string MatchFirstNotEmpty(this string text, params string [] patterns) {
+			var r = patterns
+				.Select(x => new Regex(x))
+				.ToArray();
+			return MatchFirstNotEmpty(text, r);
+		}
+
+		public static string MatchFirstNotEmpty(this string text, params Regex [] patterns) {
+			return null;
+		}
+
+		public static string [] MatchNotEmpty(this string text, params string [] patterns) {
+			var r = patterns
+				.Select(x => new Regex(x))
+				.ToArray();
+			return MatchNotEmpty(text, r);
+		}
+
+		public static string [] MatchNotEmpty(this string text, params Regex [] patterns) {
+			return null;
+		}
+		#endregion
 	}
 }
 

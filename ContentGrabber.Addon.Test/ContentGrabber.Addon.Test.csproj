@@ -29,6 +29,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExt\StringExtTest.cs" />
     <Compile Include="Samples.cs" />
+    <Compile Include="SearchLists\SearchListsTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -44,5 +45,6 @@
   <ItemGroup>
     <Folder Include="StringExt\" />
     <Folder Include="Bat\" />
+    <Folder Include="SearchLists\" />
   </ItemGroup>
 </Project>

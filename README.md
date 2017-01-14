@@ -5,6 +5,8 @@
 
 ## Functions
 
+All **really actual and working** samples are in [tests](ContentGrabber.Addon.Test/Samples.cs)
+
 ### Run BAT
 
 ```csharp
