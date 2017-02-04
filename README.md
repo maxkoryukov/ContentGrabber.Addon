@@ -1,5 +1,23 @@
 # ContentGrabber.Addon
 
+## FAQ
+
+#### Where are sources?
+
+Direct link to the [source code](./ContentGrabber.Addon) - this is the link to the folder in this repository (which contains **C# source code of `ContentGrabber.Addon`** and tests for it).
+
+#### I need an assembly, where I could get it?
+
+There are [**RELEASES PAGE**][github-releases] with all published releases of the library. Each release contains the section **Downloads**, and there is a file `ContentGrabber.Addon.dll` - this is the final **DLL (Assembly)**, suitable for downloading and using with Content Grabber.
+
+Just choose the latest release (usually - on the top of [**Releases page**][github-releases]), and download the file `ContentGrabber.Addon.dll`.
+
+About latest release: we follow the [semantic versioning](http://semver.org/) in this project
+
+----
+
+## About this repo
+
 [![Build status](https://ci.appveyor.com/api/projects/status/gdwfn2l56vvrq86g?svg=true)](https://ci.appveyor.com/project/maxkoryukov/contentgrabber-addon)
 [![codecov](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon/branch/master/graph/badge.svg)](https://codecov.io/gh/maxkoryukov/ContentGrabber.Addon)
 
@@ -124,3 +142,5 @@ Use as string-extension:
 			Assert.That(result, Is.True);
 		}
 ```
+
+[github-releases]: ../../releases
